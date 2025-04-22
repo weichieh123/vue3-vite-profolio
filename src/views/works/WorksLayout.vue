@@ -4,7 +4,7 @@
     class="works-layout"
     :title="'Layout'"
     :works="works"
-    :path="'Layout/'"
+    :path="'Layout'"
     @flip="flipCard"
     @close="closeCard"
   />

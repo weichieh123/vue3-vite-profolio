@@ -4,7 +4,7 @@
     class="works-react"
     :title="'React'"
     :works="works"
-    :path="'React/'"
+    :path="'React'"
     @flip="flipCard" @close="closeCard"
   />
 </template>

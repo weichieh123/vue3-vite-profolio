@@ -4,7 +4,7 @@
     class="works-vue"
     :title="'Vue'"
     :works="works"
-    :path="'Vue/'"
+    :path="'Vue'"
     @flip="flipCard"
     @close="closeCard"
   />

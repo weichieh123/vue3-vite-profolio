@@ -17,7 +17,7 @@
               :class="{ isFlipped: work.isFlip }"
             >
               <img
-                :src="`/Works/${path}/${work.img}`"
+                :src="`Works/${path}/${work.img}`"
                 class="img-fullscreen card__face card__face-front mt-offset"
               />
               <div class="hover-hint" @click="emit('flip', work)">
