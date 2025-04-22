@@ -1,29 +1,16 @@
 <template>
   <div class="app">
     <Header />
-    <div id="section" class="section" @click="closeMenu">
-      <Home />
-      <About />
-      <WorksLayout />
-      <WorksVue />
-      <WorksReact />
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup>
 import { useStore } from 'vuex';
 import Header from './components/layout/Header.vue';
-import Home from './views/Home.vue';
-import About from './views/About.vue';
-import WorksLayout from './views/works/WorksLayout.vue';
-import WorksVue from './views/works/WorksVue.vue';
-import WorksReact from './views/works/WorksReact.vue';
 
 const store = useStore();
-const closeMenu = () => {
-  store.dispatch('closeMenu');
-};
+
 </script>
 
 <style lang="scss">

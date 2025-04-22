@@ -19,16 +19,17 @@
     <nav :class="{ active: isOpen }">
       <div class="sidemenu__wrap">
         <ul class="sidemenu__list">
-          <li class="sidemenu__item" @click="toggleIsOpen"><a :class="{ active: isOpen }" href="#home" v-smooth-scroll>Home</a> </li>
-          <li class="sidemenu__item" @click="toggleIsOpen"><a :class="{ active: isOpen }" href="#about" v-smooth-scroll="{ offset: -50, container: '#section', }">About</a></li>
+          <li class="sidemenu__item" @click="goHomePage"><a :class="{ active: isOpen }" href="#home" v-smooth-scroll>Home</a> </li>
+          <li class="sidemenu__item" @click="goHomePage"><a :class="{ active: isOpen }" href="#about" v-smooth-scroll="{ offset: -50 }">About</a></li>
           <li class="sidemenu__item">
-            <a :class="{ active: isOpen }" href="#works-layout" @click="toggleIsOpen" v-smooth-scroll="{ offset: -50 }" >Works</a>
+            <a :class="{ active: isOpen }" href="#works-layout" @click="goHomePage" v-smooth-scroll="{ offset: -50 }" >Works</a>
             <ul>
-              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-layout" @click="toggleIsOpen" v-smooth-scroll="{ offset: -50 }">- Layout</a></li>
-              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-vue" @click="toggleIsOpen" v-smooth-scroll="{ offset: -50 }">- Vue</a></li>
-              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-react" @click="toggleIsOpen" v-smooth-scroll="{ offset: -50 }">- React</a></li>
+              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-layout" @click="goHomePage" v-smooth-scroll="{ offset: -50 }">- Layout</a></li>
+              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-vue" @click="goHomePage" v-smooth-scroll="{ offset: -50 }">- Vue</a></li>
+              <li><a :class="{ active: isOpen }" class="sub-item" href="#works-react" @click="goHomePage" v-smooth-scroll="{ offset: -50 }">- React</a></li>
               </ul>
             </li>
+            <!-- <li class="sidemenu__item" @click="goInfoPage"><a :class="{ active: isOpen }">Info</a></li> -->
         </ul>
       </div>
     </nav>
@@ -38,11 +39,25 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const store = useStore();
+const route = useRoute();
+const router = useRouter();
+
 const isOpen = computed(() => store.getters.getIsOpen);
 const toggleIsOpen = () => {
   store.dispatch('toggleIsOpen');
+};
+const goHomePage = () => {
+  toggleIsOpen()
+  if (route.path === '/info') {
+    router.push('/')
+  }
+};
+const goInfoPage = () => {
+  store.dispatch('toggleIsOpen');
+  router.push('/info')
 };
 </script>
 
